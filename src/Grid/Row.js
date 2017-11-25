@@ -13,7 +13,15 @@ export default class Row extends React.Component {
   }
 
   renderCell(column, index) {
-    return <Cell column={column} row={this.props.row} parentId={this.state.rowId} index={index} key={this.props.columns.key} />
+    return <Cell
+      column={column}
+      row={this.props.row}
+      parentId={this.state.rowId}
+      rowId={this.props.index}
+      index={index}
+      key={this.props.columns.key}
+      focusCell={this.props.focusCell}
+    />
   }
   
   renderCheckbox() {

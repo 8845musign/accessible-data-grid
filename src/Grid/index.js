@@ -8,12 +8,23 @@ export default class Grid extends React.Component {
     super(props)
     
     this.state = {
-      gridId: new Date().getTime()
+      gridId: new Date().getTime(),
+      focusCell: {
+        rowId: 0,
+        cellId: 0
+      }
     }
   }
   
   renderRow(row, index) {
-    return <Row parentId={this.state.gridId} row={row} key={row.id} index={index} columns={this.props.columns} />
+    return <Row
+      parentId={this.state.gridId}
+      row={row}
+      key={row.id}
+      index={index}
+      columns={this.props.columns}
+      focusCell={this.state.focusCell}
+    />
   }
   
   render() {
