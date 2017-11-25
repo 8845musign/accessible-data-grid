@@ -1,0 +1,21 @@
+{
+  "name": "accessible-data-grid",
+  "version": "0.0.1",
+  "scripts": {
+    "production": "webpack -p",
+    "develop": "webpack -d",
+    "watch": "webpack-dev-server -d --watch"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.32",
+    "@babel/preset-env": "^7.0.0-beta.32",
+    "@babel/preset-react": "^7.0.0-beta.32",
+    "babel-loader": "8.0.0-beta.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
+  },
+  "dependencies": {
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1"
+  }
+}
