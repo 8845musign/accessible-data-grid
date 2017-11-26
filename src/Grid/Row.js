@@ -21,6 +21,7 @@ export default class Row extends React.Component {
       index={index}
       key={this.props.columns.key}
       focusCell={this.props.focusCell}
+      selectCell={this.props.selectCell}
     />
   }
   

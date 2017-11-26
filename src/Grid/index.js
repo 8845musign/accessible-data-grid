@@ -56,6 +56,15 @@ export default class Grid extends React.Component {
     })
   }
 
+  selectCell(rowId, cellId) {
+    this.setState({
+      focusCell: {
+        rowId,
+        cellId,
+      }
+    })
+  }
+
   handleKeyDown(e) {
     switch(e.key) {
       case 'ArrowUp':
@@ -82,6 +91,7 @@ export default class Grid extends React.Component {
       columns={this.props.columns}
       focusCell={this.state.focusCell}
       isSelected={this.state.selectedRows.includes(index)}
+      selectCell={this.selectCell.bind(this)}
     />
   }
   

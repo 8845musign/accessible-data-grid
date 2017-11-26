@@ -33,6 +33,10 @@ export default class Cell extends React.Component {
     }
   }
 
+  handleClick() {
+    this.props.selectCell(this.props.rowId, this.props.index)
+  }
+
   render() {
     return (
       <div
@@ -40,6 +44,7 @@ export default class Cell extends React.Component {
         tabIndex={this.state.isFocus ? 0 : -1}
         className="cell"
         ref={(ref) => { this.cell = ref }}
+        onClick={this.handleClick.bind(this)}
       >
         {this.props.row[this.props.column.key]}
       </div>
