@@ -8,14 +8,26 @@ import {
 export default class Cell extends React.Component {
   constructor(props) {
     super(props)
-    
+
     this.state = {
       cellId: createChildId(this.props.parentId, this.props.index),
       isFocus: isFocus(this.props.focusCell, this.props.rowId, this.props.index)
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      isFocus: isFocus(nextProps.focusCell, nextProps.rowId, nextProps.index)
+    })
+  }
+
   componentDidMount() {
+    if (this.state.isFocus) {
+      this.cell.focus()
+    }
+  }
+
+  componentDidUpdate() {
     if (this.state.isFocus) {
       this.cell.focus()
     }
