@@ -6,12 +6,29 @@
   <title>Data Grid</title>
 
   <style>
-    div:focus {
-      background: red;
+    html {
+      color: #333;
+    }
+
+    .grid {
+      border-top: 1px solid #eceeef;
+      border-bottom: 1px solid #eceeef;
     }
 
     .row {
       display: flex;
+    }
+
+    .row + .row {
+      border-top: 1px solid #eceeef;
+    }
+
+    .cell {
+      flex: 0 0 100px;
+      text-align: center;
+      line-height: 1.25;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
     }
   </style>
 </head>
