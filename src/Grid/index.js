@@ -19,7 +19,8 @@ export default class Grid extends React.Component {
       focusCell: {
         rowId: 0,
         cellId: 0
-      }
+      },
+      selectedRows: [0]
     }
   }
 
@@ -80,6 +81,7 @@ export default class Grid extends React.Component {
       index={index}
       columns={this.props.columns}
       focusCell={this.state.focusCell}
+      isSelected={this.state.selectedRows.includes(index)}
     />
   }
   

@@ -27,7 +27,12 @@ export default class Row extends React.Component {
   renderCheckbox() {
     return (
       <div className="cell">
-        <input aria-labelledby={createChildId(this.state.rowId, 1)} type="checkbox" tabIndex={-1} />
+        <input
+          aria-labelledby={createChildId(this.state.rowId, 1)}
+          type="checkbox"
+          tabIndex={-1}
+          checked={this.props.isSelected}
+        />
       </div>
     )
   }
