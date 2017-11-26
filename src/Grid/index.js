@@ -25,7 +25,6 @@ export default class Grid extends React.Component {
 
   rowUp() {
     const focusCell = rowUp(this.props.data, this.state.focusCell);
-    console.log(focusCell)
 
     this.setState({
       focusCell: focusCell
