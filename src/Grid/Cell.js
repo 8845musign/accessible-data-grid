@@ -1,8 +1,10 @@
 import React from 'react'
+import focusable from 'focusable'
 
 import {
   createChildId,
   isFocus,
+  isCheckBox,
 } from './util'
 
 export default class Cell extends React.Component {
@@ -22,14 +24,22 @@ export default class Cell extends React.Component {
   }
 
   componentDidMount() {
-    if (this.state.isFocus) {
-      this.cell.focus()
-    }
+    this.focus()
   }
 
   componentDidUpdate() {
+    this.focus()
+  }
+
+  focus() {
     if (this.state.isFocus) {
-      this.cell.focus()
+      const focusableEl = this.cell.querySelector(focusable)
+
+      if (focusableEl) {
+        focusableEl.focus()
+      } else {
+        this.cell.focus()
+      }
     }
   }
 
@@ -37,16 +47,32 @@ export default class Cell extends React.Component {
     this.props.selectCell(this.props.rowId, this.props.index)
   }
 
+  handleChange(e) {
+    if (e.target.getAttribute('type') !== 'checkbox') {
+      this.props.handleChangeCheckbox(this.props.rowId)
+    }
+  }
+
   render() {
+    const Formatter = this.props.column.formatter
+
+    const handleChange = () => {
+      this.props.handleChangeCheckbox(this.props.rowId)
+    }
+
     return (
       <div
         id={this.state.cellId}
-        tabIndex={this.state.isFocus ? 0 : -1}
+        tabIndex={(this.state.isFocus && !isCheckBox(Formatter)) ? 0 : -1}
         className="cell"
         ref={(ref) => { this.cell = ref }}
-        onClick={this.handleClick.bind(this)}
+        onKeyPress={this.handleChange.bind(this)}
       >
-        {this.props.row[this.props.column.key]}
+        <Formatter
+          isFocus={this.state.isFocus}
+          onChange={handleChange}
+          value={this.props.row[this.props.column.key]}
+        />
       </div>
     )
   }

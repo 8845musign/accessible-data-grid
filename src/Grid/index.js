@@ -4,6 +4,8 @@ import Row from './Row'
 import Cell from './Cell'
 
 import {
+  createData,
+  createColumns,
   rowUp,
   rowRight,
   rowDown,
@@ -15,6 +17,8 @@ export default class Grid extends React.Component {
     super(props)
     
     this.state = {
+      data: createData(this.props.data),
+      columns: createColumns(this.props.columns),
       gridId: new Date().getTime(),
       focusCell: {
         rowId: 0,
@@ -25,7 +29,7 @@ export default class Grid extends React.Component {
   }
 
   rowUp() {
-    const focusCell = rowUp(this.props.data, this.state.focusCell);
+    const focusCell = rowUp(this.state.data, this.state.focusCell);
 
     this.setState({
       focusCell: focusCell
@@ -33,7 +37,7 @@ export default class Grid extends React.Component {
   }
 
   rowRight() {
-    const focusCell = rowRight(this.props.columns, this.state.focusCell);
+    const focusCell = rowRight(this.state.columns, this.state.focusCell);
 
     this.setState({
       focusCell: focusCell
@@ -41,7 +45,7 @@ export default class Grid extends React.Component {
   }
 
   rowDown() {
-    const focusCell = rowDown(this.props.data, this.state.focusCell);
+    const focusCell = rowDown(this.state.data, this.state.focusCell);
 
     this.setState({
       focusCell: focusCell
@@ -49,7 +53,7 @@ export default class Grid extends React.Component {
   }
 
   rowLeft() {
-    const focusCell = rowLeft(this.props.columns, this.state.focusCell);
+    const focusCell = rowLeft(this.state.columns, this.state.focusCell);
 
     this.setState({
       focusCell: focusCell
@@ -81,6 +85,13 @@ export default class Grid extends React.Component {
         break
     }
   }
+
+  handleChangeCheckbox(rowId, value) {
+    const data = createData(this.state.data)
+    data[rowId].checked = !data[rowId].checked
+
+    this.setState({ data })
+  }
   
   renderRow(row, index) {
     return <Row
@@ -88,13 +99,14 @@ export default class Grid extends React.Component {
       row={row}
       key={row.id}
       index={index}
-      columns={this.props.columns}
+      columns={this.state.columns}
       focusCell={this.state.focusCell}
       isSelected={this.state.selectedRows.includes(index)}
       selectCell={this.selectCell.bind(this)}
+      handleChangeCheckbox={this.handleChangeCheckbox.bind(this)}
     />
   }
-  
+
   render() {
     return (
       <div
@@ -102,7 +114,7 @@ export default class Grid extends React.Component {
         role="grid"
         className="grid"
       >
-        {this.props.data.map(this.renderRow.bind(this))}
+        {this.state.data.map(this.renderRow.bind(this))}
       </div>
     )
   }
