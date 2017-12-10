@@ -1,5 +1,6 @@
 import React from 'react'
 
+import HeaderRow from './HeaderRow'
 import Row from './Row'
 import Cell from './Cell'
 
@@ -131,7 +132,7 @@ export default class Grid extends React.Component {
         role="grid"
         className="grid"
       >
-        {this.renderHeaders()}
+        <HeaderRow columns={this.state.columns} />
         {this.state.data.map(this.renderRow.bind(this))}
       </div>
     )
