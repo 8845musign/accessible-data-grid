@@ -111,6 +111,7 @@ export default class Grid extends React.Component {
     return (
       <div
         onKeyDown={this.handleKeyDown.bind(this)}
+        aria-labelledby={this.props.ariaLabelledby}
         role="grid"
         className="grid"
       >

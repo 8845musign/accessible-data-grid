@@ -37,8 +37,9 @@ const columns = [
 ]
 
 ReactDOM.render(
-  <div>
-    <Grid data={data} columns={columns} />
-  </div>,
+  <section>
+    <h1 id="heading">サンプルグリッド</h1>
+    <Grid ariaLabelledby="heading" data={data} columns={columns} />
+  </section>,
   document.getElementById('app')
 );
