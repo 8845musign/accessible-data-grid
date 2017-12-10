@@ -20,7 +20,7 @@ export default class Row extends React.Component {
       parentId={this.state.rowId}
       rowId={this.props.index}
       index={index}
-      key={this.props.columns.key}
+      key={index}
       focusCell={this.props.focusCell}
       selectCell={this.props.selectCell}
       handleChangeCheckbox={this.props.handleChangeCheckbox}
