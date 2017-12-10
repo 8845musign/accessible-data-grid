@@ -62,6 +62,7 @@ export default class Cell extends React.Component {
 
     return (
       <div
+        role="gridcell"
         id={this.state.cellId}
         tabIndex={(this.state.isFocus && !isCheckBox(Formatter)) ? 0 : -1}
         className="cell"
