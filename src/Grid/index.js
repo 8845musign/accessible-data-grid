@@ -92,7 +92,23 @@ export default class Grid extends React.Component {
 
     this.setState({ data })
   }
-  
+
+  renderHeader(column, index) {
+    return (
+      <div role="columnheader" key={`${column.key}__columnheader`}>
+        {column.label}
+      </div>
+    )
+  }
+
+  renderHeaders() {
+    return (
+      <div role="row">
+        {this.state.columns.map(this.renderHeader.bind(this))}
+      </div>
+    )
+  }
+
   renderRow(row, index) {
     return <Row
       parentId={this.state.gridId}
@@ -115,6 +131,7 @@ export default class Grid extends React.Component {
         role="grid"
         className="grid"
       >
+        {this.renderHeaders()}
         {this.state.data.map(this.renderRow.bind(this))}
       </div>
     )

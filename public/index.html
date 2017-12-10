@@ -15,19 +15,20 @@
       border-bottom: 1px solid #eceeef;
     }
 
-    .row {
+    [role="row"] {
       display: flex;
     }
 
-    .row + .row {
+    [role="row"] + [role="row"] {
       border-top: 1px solid #eceeef;
     }
 
-    .row.is-selected {
+    [role="row"].is-selected {
       background-color: #e3f2fd;
     }
 
-    .cell {
+    .cell,
+    [role="columnheader"] {
       flex: 0 0 100px;
       text-align: center;
       line-height: 1.25;
