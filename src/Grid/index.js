@@ -9,8 +9,8 @@ import {
   createColumns,
   rowUp,
   rowDown,
-  rowTop,
-  rowBottom,
+  rowAndCellFirst,
+  rowAndCellEnd,
   cellRight,
   cellLeft,
   cellFirst,
@@ -49,19 +49,19 @@ export default class Grid extends React.Component {
     })
   }
 
-  rowTop() {
-    const focusCell = rowTop(this.state.data, this.state.focusCell);
+  rowAndCellFirst() {
+    const focusCell = rowAndCellFirst(this.state.focusCell);
 
     this.setState({
       focusCell: focusCell
     })
   }
 
-  rowBottom() {
-    const focusCell = rowBottom(this.state.data, this.state.focusCell);
+  rowAndCellEnd() {
+    const focusCell = rowAndCellEnd(this.state.data, this.state.columns, this.state.focusCell);
 
     this.setState({
-      focusCell: focusCell
+      focusCell: focusCell,
     })
   }
 
@@ -123,10 +123,10 @@ export default class Grid extends React.Component {
     }
 
     if (e.ctrlKey && e.key === 'Home') {
-      this.rowTop()
+      this.rowAndCellFirst()
       return
     } else if(e.ctrlKey && e.key === 'End') {
-      this.rowBottom()
+      this.rowAndCellEnd()
       return
     }
 
