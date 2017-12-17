@@ -49,7 +49,7 @@ export default class Cell extends React.Component {
 
   handleChange(e) {
     if (e.target.getAttribute('type') !== 'checkbox') {
-      this.props.handleChangeCheckbox(this.props.rowId)
+      this.props.onChangeRowSelection(this.props.rowId)
     }
   }
 
@@ -57,7 +57,7 @@ export default class Cell extends React.Component {
     const Formatter = this.props.column.formatter
 
     const handleChange = () => {
-      this.props.handleChangeCheckbox(this.props.rowId)
+      this.props.onChangeRowSelection(this.props.rowId)
     }
 
     return (

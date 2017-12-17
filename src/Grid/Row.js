@@ -23,7 +23,7 @@ export default class Row extends React.Component {
       key={index}
       focusCell={this.props.focusCell}
       selectCell={this.props.selectCell}
-      handleChangeCheckbox={this.props.handleChangeCheckbox}
+      onChangeRowSelection={this.props.onChangeRowSelection}
     />
   }
 
