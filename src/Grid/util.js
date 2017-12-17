@@ -87,3 +87,17 @@ export const cellLeft = (columns, focusCell) => {
     { cellId }
   )
 }
+
+export const cellFirst = (columns, focusCell) => {
+  return Object.assign({},
+    focusCell,
+    { cellId: 0 }
+  )
+}
+
+export const cellEnd = (columns, focusCell) => {
+  return Object.assign({},
+    focusCell,
+    { cellId: columns.length - 1 }
+  )
+}

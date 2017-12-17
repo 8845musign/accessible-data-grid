@@ -12,7 +12,9 @@ import {
   rowTop,
   rowBottom,
   cellRight,
-  cellLeft
+  cellLeft,
+  cellFirst,
+  cellEnd
 } from './util'
 
 export default class Grid extends React.Component {
@@ -79,6 +81,22 @@ export default class Grid extends React.Component {
     })
   }
 
+  cellFirst() {
+    const focusCell = cellFirst(this.state.columns, this.state.focusCell);
+
+    this.setState({
+      focusCell: focusCell
+    })
+  }
+
+  cellEnd() {
+    const focusCell = cellEnd(this.state.columns, this.state.focusCell);
+
+    this.setState({
+      focusCell: focusCell
+    })
+  }
+
   selectCell(rowId, cellId) {
     this.setState({
       focusCell: {
@@ -113,6 +131,12 @@ export default class Grid extends React.Component {
     }
 
     switch(e.key) {
+      case 'Home':
+        this.cellFirst();
+        break
+      case 'End':
+        this.cellEnd();
+        break
       case 'ArrowUp':
         this.rowUp()
         break
