@@ -70,7 +70,21 @@ export default class Grid extends React.Component {
     })
   }
 
+  selectAllRows() {
+    let data = createData(this.state.data)
+    data = data.map(row => {
+      row.checked = true
+      return row
+    })
+
+    this.setState({ data })
+  }
+
   handleKeyDown(e) {
+    if (e.ctrlKey && e.key === 'a') {
+      this.selectAllRows()
+    }
+
     switch(e.key) {
       case 'ArrowUp':
         this.rowUp()
