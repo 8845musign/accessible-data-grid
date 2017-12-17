@@ -33,7 +33,7 @@ export default class Row extends React.Component {
     })
 
     return (
-      <div className={css} id={`${this.state.rowId}`} role="row">
+      <div className={css} id={`${this.state.rowId}`} role="row" aira-selected={`${this.props.row.checked}`}>
         {this.props.columns.map(this.renderCell.bind(this))}
       </div>
     )
