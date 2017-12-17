@@ -47,8 +47,19 @@ export default class Cell extends React.Component {
     this.props.selectCell(this.props.rowId, this.props.index)
   }
 
+  handleKeyPress(e) {
+    // チェックボックス上でkeyが押された場合、Cell自体のkeyEventは無視して多重に変更がかかることを防ぐ
+    if (e.target.getAttribute('type') === 'checkbox') return
+
+    if (e.shiftKey && e.key === '\u0020') {
+      // Shift + Space
+      this.props.onChangeRowSelection(this.props.rowId)
+    }
+  }
+
+  // CheckboxFormatterへ渡す
   handleChange(e) {
-    if (e.target.getAttribute('type') !== 'checkbox') {
+    if (e.target.getAttribute('type') === 'checkbox') {
       this.props.onChangeRowSelection(this.props.rowId)
     }
   }
@@ -67,7 +78,7 @@ export default class Cell extends React.Component {
         tabIndex={(this.state.isFocus && !isCheckBox(Formatter)) ? 0 : -1}
         className="cell"
         ref={(ref) => { this.cell = ref }}
-        onKeyPress={this.handleChange.bind(this)}
+        onKeyPress={this.handleKeyPress.bind(this)}
       >
         <Formatter
           isFocus={this.state.isFocus}
