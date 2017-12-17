@@ -82,7 +82,7 @@ export default class Grid extends React.Component {
   }
 
   cellFirst() {
-    const focusCell = cellFirst(this.state.columns, this.state.focusCell);
+    const focusCell = cellFirst(this.state.focusCell);
 
     this.setState({
       focusCell: focusCell

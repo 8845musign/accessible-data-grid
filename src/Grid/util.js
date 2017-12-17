@@ -74,7 +74,7 @@ export const cellLeft = (columns, focusCell) => {
   )
 }
 
-export const cellFirst = (columns, focusCell) => {
+export const cellFirst = (focusCell) => {
   return Object.assign({},
     focusCell,
     { cellId: 0 }
