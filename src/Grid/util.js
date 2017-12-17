@@ -58,6 +58,20 @@ export const rowDown = (row, focusCell) => {
   )
 }
 
+export const rowTop = (row, focusCell) => {
+  return Object.assign({},
+    focusCell,
+    { rowId: 0 }
+  )
+}
+
+export const rowBottom = (row, focusCell) => {
+  return Object.assign({},
+    focusCell,
+    { rowId: row.length - 1 }
+  )
+}
+
 export const cellRight = (columns, focusCell) => {
   const cellId = focusCell.cellId < (columns.length - 1) ? ++focusCell.cellId : focusCell.cellId
   return Object.assign({},

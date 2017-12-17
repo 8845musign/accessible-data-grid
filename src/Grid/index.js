@@ -9,6 +9,8 @@ import {
   createColumns,
   rowUp,
   rowDown,
+  rowTop,
+  rowBottom,
   cellRight,
   cellLeft
 } from './util'
@@ -39,6 +41,22 @@ export default class Grid extends React.Component {
 
   rowDown() {
     const focusCell = rowDown(this.state.data, this.state.focusCell);
+
+    this.setState({
+      focusCell: focusCell
+    })
+  }
+
+  rowTop() {
+    const focusCell = rowTop(this.state.data, this.state.focusCell);
+
+    this.setState({
+      focusCell: focusCell
+    })
+  }
+
+  rowBottom() {
+    const focusCell = rowBottom(this.state.data, this.state.focusCell);
 
     this.setState({
       focusCell: focusCell
@@ -83,6 +101,15 @@ export default class Grid extends React.Component {
   handleKeyDown(e) {
     if (e.ctrlKey && e.key === 'a') {
       this.selectAllRows()
+      return
+    }
+
+    if (e.ctrlKey && e.key === 'Home') {
+      this.rowTop()
+      return
+    } else if(e.ctrlKey && e.key === 'End') {
+      this.rowBottom()
+      return
     }
 
     switch(e.key) {
