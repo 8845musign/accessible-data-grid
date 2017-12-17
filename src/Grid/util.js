@@ -50,14 +50,6 @@ export const rowUp = (row, focusCell) => {
   )
 }
 
-export const rowRight = (columns, focusCell) => {
-  const cellId = focusCell.cellId < (columns.length - 1) ? ++focusCell.cellId : focusCell.cellId
-  return Object.assign({},
-    focusCell,
-    { cellId }
-  )
-}
-
 export const rowDown = (row, focusCell) => {
   const rowId = focusCell.rowId < (row.length - 1) ? ++focusCell.rowId : focusCell.rowId
   return Object.assign({},
@@ -66,7 +58,15 @@ export const rowDown = (row, focusCell) => {
   )
 }
 
-export const rowLeft = (columns, focusCell) => {
+export const cellRight = (columns, focusCell) => {
+  const cellId = focusCell.cellId < (columns.length - 1) ? ++focusCell.cellId : focusCell.cellId
+  return Object.assign({},
+    focusCell,
+    { cellId }
+  )
+}
+
+export const cellLeft = (columns, focusCell) => {
   const cellId = focusCell.cellId > 0 ? --focusCell.cellId : focusCell.cellId
   return Object.assign({},
     focusCell,

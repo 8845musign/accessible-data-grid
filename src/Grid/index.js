@@ -8,9 +8,9 @@ import {
   createData,
   createColumns,
   rowUp,
-  rowRight,
   rowDown,
-  rowLeft
+  cellRight,
+  cellLeft
 } from './util'
 
 export default class Grid extends React.Component {
@@ -37,14 +37,6 @@ export default class Grid extends React.Component {
     })
   }
 
-  rowRight() {
-    const focusCell = rowRight(this.state.columns, this.state.focusCell);
-
-    this.setState({
-      focusCell: focusCell
-    })
-  }
-
   rowDown() {
     const focusCell = rowDown(this.state.data, this.state.focusCell);
 
@@ -53,8 +45,16 @@ export default class Grid extends React.Component {
     })
   }
 
-  rowLeft() {
-    const focusCell = rowLeft(this.state.columns, this.state.focusCell);
+  cellRight() {
+    const focusCell = cellRight(this.state.columns, this.state.focusCell);
+
+    this.setState({
+      focusCell: focusCell
+    })
+  }
+
+  cellLeft() {
+    const focusCell = cellLeft(this.state.columns, this.state.focusCell);
 
     this.setState({
       focusCell: focusCell
@@ -76,13 +76,13 @@ export default class Grid extends React.Component {
         this.rowUp()
         break
       case 'ArrowRight':
-        this.rowRight()
+        this.cellRight()
         break
       case 'ArrowDown':
         this.rowDown()
         break
       case 'ArrowLeft':
-        this.rowLeft()
+        this.cellLeft()
         break
     }
   }
