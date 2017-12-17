@@ -34,7 +34,10 @@ const data = [
   },
   {
     id: 'id4',
-    name: 'テス美',
+    name: {
+      label: 'テス美',
+      href: 'https://abroller.tech/'
+    },
     sex: '女',
     birth: '1995/11/09'
   },
