@@ -79,6 +79,7 @@ export default class Cell extends React.Component {
         className="cell"
         ref={(ref) => { this.cell = ref }}
         onKeyPress={this.handleKeyPress.bind(this)}
+        onClick={this.handleClick.bind(this)}
       >
         <Formatter
           isFocus={this.state.isFocus}
