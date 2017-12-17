@@ -82,6 +82,7 @@ export default class Cell extends React.Component {
         onClick={this.handleClick.bind(this)}
       >
         <Formatter
+          parentId={this.props.parentId}
           isFocus={this.state.isFocus}
           onChange={handleChange}
           value={this.props.row[this.props.column.key]}
