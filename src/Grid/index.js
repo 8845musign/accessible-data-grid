@@ -87,7 +87,7 @@ export default class Grid extends React.Component {
     }
   }
 
-  handleChangeCheckbox(rowId, value) {
+  toggleRowSelection(rowId, value) {
     const data = createData(this.state.data)
     data[rowId].checked = !data[rowId].checked
 
@@ -120,7 +120,7 @@ export default class Grid extends React.Component {
       focusCell={this.state.focusCell}
       isSelected={this.state.selectedRows.includes(index)}
       selectCell={this.selectCell.bind(this)}
-      handleChangeCheckbox={this.handleChangeCheckbox.bind(this)}
+      handleChangeCheckbox={this.toggleRowSelection.bind(this)}
     />
   }
 
