@@ -197,8 +197,13 @@ export default class Grid extends React.Component {
         role="grid"
         className="grid"
       >
-        <HeaderRow columns={this.state.columns} />
-        {this.state.data.map(this.renderRow.bind(this))}
+        <div role="rowgroup">
+          <HeaderRow columns={this.state.columns} />
+        </div>
+        
+        <div role="rowgroup">
+          {this.state.data.map(this.renderRow.bind(this))}
+        </div>
       </div>
     )
   }

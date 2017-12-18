@@ -11,16 +11,21 @@
     }
 
     [role="grid"] {
-      border-top: 1px solid #eceeef;
-      border-bottom: 1px solid #eceeef;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
     }
+
+    [role="rowgroup"] + [role="rowgroup"] {
+      border-top: 1px solid #eee;
+    }
+
 
     [role="row"] {
       display: flex;
     }
 
     [role="row"] + [role="row"] {
-      border-top: 1px solid #eceeef;
+      border-top: 1px solid #eee;
     }
 
     [role="row"].is-selected {
@@ -29,11 +34,17 @@
 
     [role="gridcell"],
     [role="columnheader"] {
-      flex: 0 0 100px;
+      flex: 1 1 0;
       text-align: center;
       line-height: 1.25;
       padding-top: 0.5em;
       padding-bottom: 0.5em;
+    }
+
+    /* checkbox */
+    [role="gridcell"]:first-child,
+    [role="columnheader"]:first-child {
+      flex: 0 0 50px;
     }
   </style>
 </head>
