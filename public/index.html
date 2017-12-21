@@ -8,28 +8,38 @@
   <style>
     html {
       color: #333;
+      padding: 20px;
+    }
+
+    #heading {
+      font-size: 1.2rem;
+      margin-bottom: 0.5em;
     }
 
     [role="grid"] {
-      border-top: 1px solid #eee;
-      border-bottom: 1px solid #eee;
+      border-top: 1px solid #9FA8DA;
+      border-bottom: 1px solid #9FA8DA;
     }
 
     [role="rowgroup"] + [role="rowgroup"] {
-      border-top: 1px solid #eee;
+      border-top: 1px solid #9FA8DA;
     }
-
 
     [role="row"] {
       display: flex;
     }
 
     [role="row"] + [role="row"] {
-      border-top: 1px solid #eee;
+      border-top: 1px solid #9FA8DA;
     }
 
     [role="row"].is-selected {
       background-color: #e3f2fd;
+    }
+
+    [role="columnheader"] {
+      background-color: #3F51B5;
+      color: #fff;
     }
 
     [role="gridcell"],
