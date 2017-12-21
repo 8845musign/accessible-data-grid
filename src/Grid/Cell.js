@@ -24,6 +24,13 @@ export default class Cell extends React.Component {
   }
 
   componentDidMount() {
+    this.focusableChlild = this.cell.querySelector(focusable)
+
+    // focusableな子要素があった場合、cellのtabIndexを除去するためにforceUpdateする
+    if (this.focusableChlild) {
+      this.forceUpdate();
+    }
+
     this.focus()
   }
 
@@ -32,14 +39,12 @@ export default class Cell extends React.Component {
   }
 
   focus() {
-    if (this.state.isFocus) {
-      const focusableEl = this.cell.querySelector(focusable)
+    if (!this.state.isFocus) return;
 
-      if (focusableEl) {
-        focusableEl.focus()
-      } else {
-        this.cell.focus()
-      }
+    if (this.focusableChlild) {
+      this.focusableChlild.focus()
+    } else {
+      this.cell.focus()
     }
   }
 
@@ -71,11 +76,19 @@ export default class Cell extends React.Component {
       this.props.onChangeRowSelection(this.props.rowId)
     }
 
+    let tabIndex = (
+      this.state.isFocus &&
+      !isCheckBox(Formatter)
+    ) ? 0 : -1
+
+    // focusableな子要素があったらセル自体にフォーカスを当てない
+    if (this.focusableChlild) tabIndex = null;
+
     return (
       <div
         role="gridcell"
         id={this.state.cellId}
-        tabIndex={(this.state.isFocus && !isCheckBox(Formatter)) ? 0 : -1}
+        tabIndex={tabIndex}
         className="cell"
         ref={(ref) => { this.cell = ref }}
         onKeyPress={this.handleKeyPress.bind(this)}
