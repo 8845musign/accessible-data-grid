@@ -7,6 +7,7 @@ import {
   isCheckBox,
 } from './util'
 
+// FIXME: focus管理でelementの属性を直に操作してしまっている。Formatterに任せるべき
 export default class Cell extends React.Component {
   constructor(props) {
     super(props)
@@ -26,9 +27,13 @@ export default class Cell extends React.Component {
   componentDidMount() {
     this.focusableChlild = this.cell.querySelector(focusable)
 
-    // focusableな子要素があった場合、cellのtabIndexを除去するためにforceUpdateする
     if (this.focusableChlild) {
+      this.focusableChlild.tabIndex = -1;
+      // focusableな子要素があった場合、cellのtabIndexを除去するためにforceUpdateする
       this.forceUpdate();
+    }
+
+    if (this.focusableChlild) {
     }
 
     this.focus()
@@ -39,9 +44,10 @@ export default class Cell extends React.Component {
   }
 
   focus() {
-    if (!this.state.isFocus) return;
+    if (!this.state.isFocus) return
 
     if (this.focusableChlild) {
+      this.focusableChlild.tabIndex = 0
       this.focusableChlild.focus()
     } else {
       this.cell.focus()
