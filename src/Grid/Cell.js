@@ -40,6 +40,10 @@ export default class Cell extends React.Component {
   }
 
   componentDidUpdate() {
+    if (this.focusableChlild && !this.state.isFocus) {
+      this.focusableChlild.tabIndex = -1;
+    }
+
     this.focus()
   }
 
