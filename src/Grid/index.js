@@ -114,6 +114,7 @@ export default class Grid extends React.Component {
     })
 
     this.setState({ data })
+    this.region.textContent = '全行を選択しました'
   }
 
   handleKeyDown(e) {
@@ -191,20 +192,25 @@ export default class Grid extends React.Component {
 
   render() {
     return (
-      <div
-        onKeyDown={this.handleKeyDown.bind(this)}
-        aria-labelledby={this.props.ariaLabelledby}
-        role="grid"
-        className="grid"
-      >
-        <div role="rowgroup">
-          <HeaderRow columns={this.state.columns} />
+      <>
+        <div
+          onKeyDown={this.handleKeyDown.bind(this)}
+          aria-labelledby={this.props.ariaLabelledby}
+          role="grid"
+          className="grid"
+          aria-controls="live-region"
+        >
+          <div role="rowgroup">
+            <HeaderRow columns={this.state.columns} />
+          </div>
+          
+          <div role="rowgroup">
+            {this.state.data.map(this.renderRow.bind(this))}
+          </div>
         </div>
-        
-        <div role="rowgroup">
-          {this.state.data.map(this.renderRow.bind(this))}
-        </div>
-      </div>
+
+        <div ref={(ref) => { this.region = ref }}id="live-region" role="region" aria-live="polite" className="visually-hidden"></div>
+      </>
     )
   }
 }
