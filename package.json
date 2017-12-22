@@ -4,7 +4,7 @@
   "scripts": {
     "production": "webpack -p",
     "develop": "webpack -d",
-    "watch": "webpack-dev-server -d --watch"
+    "watch": "webpack-dev-server -d --watch --content-base ./docs"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.32",
