@@ -199,6 +199,7 @@ export default class Grid extends React.Component {
           role="grid"
           className="grid"
           aria-controls="live-region"
+          aria-multiselectable="true"
         >
           <div role="rowgroup">
             <HeaderRow columns={this.state.columns} />
